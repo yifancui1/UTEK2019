@@ -109,7 +109,7 @@ int main(int argc, char** argv) {
         }
         else{
             product newProduct(x, y, productNum, weight, 1);
-            v.pushback(newProduct);
+            v.push_back(newProduct);
         }
     }
     

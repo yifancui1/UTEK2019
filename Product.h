@@ -11,7 +11,7 @@
 #include <iostream>
 using namespace std;
 
-class product {
+class Product {
 private:
     int x; //x_loc
     int y; //y_loc
