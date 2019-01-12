@@ -6,6 +6,8 @@
 #include <limits.h>
 #include <algorithm>
 #include <utility>
+#include <fstream>
+#include <sstream>
 
 using namespace std;
 
@@ -36,10 +38,15 @@ class Vertex {
 class Graph {
     vector<vector<Vertex>> adjList;
 public:
-    
 
-}
+
+};
 
 int main() {
-
+    ifstream infile;
+    infile.open("2a.in");
+    string line;
+    infile >> line;
+    cout << line << endl;
 }
+
