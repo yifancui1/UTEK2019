@@ -6,11 +6,10 @@
 
 /* 
  * File:   main.cpp
- * Author: wangz395
+ * Author: ninan3
  *
- * Created on January 12, 2019, 11:03 AM
+ * Created on January 12, 2019, 12:52 PM
  */
-
 #include <cstdlib>
 #include <iostream>
 #include <sstream>
@@ -18,6 +17,7 @@
 #include <string>
 #include <fstream>
 #include <cstdlib>
+#include <iomanip>
 
 using namespace std;
 
@@ -77,46 +77,56 @@ public:
     }
 };
 
+void sort (vector <product> & v, int n);
+void swap (product &p1, product &p2);
+void print(vector <product> &v);
 int main(int argc, char** argv) {
 
     vector <product> v;
     
+    
+    string filename;
+    cin >> filename;
+    
     ifstream myfile;
-    myfile.open("1a.in");
+    myfile.open(filename);
+    
     
     string line;
     while (getline(myfile, line)){
+        
+        stringstream sin(line);
         char a;
         int x;
         int y;
         int productNum;
         double weight;
-        line >> a;
-        line >> x;
-        line >> a;
-        line >> y;
-        line >> a;
-        line >> productNum;
-        line >> a;
-        line >> weight;
-        line >> a;
+        bool duplicate = false;
+        sin >> a;
+        sin >> x;
+        sin >> a;
+        sin >> y;
+        sin >> a;
+        sin >> productNum;
+        sin >> a;
+        sin >> weight;
+        sin >> a;
         
-        if (!v.empty()){
-            for (int i = 0; i < v.size(); i++){
-                if (v[i].getX() == x && v[i].getY() == y && v[i].getProductNum() == productNum && v[i].getWeight() == weight)
+        for (int i = 0; i < v.size(); i++){
+                if (v[i].getX() == x && v[i].getY() == y && v[i].getProductNum() == productNum && v[i].getWeight() == weight){
                     v[i].setQty(v[i].getQty() + 1);
+                    duplicate = true;
             }
         }
-        else{
+        
+        if (duplicate == false){
             product newProduct(x, y, productNum, weight, 1);
             v.push_back(newProduct);
         }
     }
-    
+
     sort (v, v.size());
-    
-    //print
-    
+    print (v);
     
     return 0;
 }
@@ -147,4 +157,15 @@ void swap (product &p1, product &p2){
     p2.setWeight(temp.getWeight());
     p2.setQty(temp.getQty());
     
+}
+
+void print(vector <product> &v){
+    for (int i = 0; i < v.size(); i++){
+        cout <<"Produce Number: " << v[i].getProductNum() << "; weight: ";
+        cout << fixed;
+        cout << setprecision(1);
+        cout << v[i].getWeight();
+        cout << "; Qty: " << v[i].getQty() << "; Location: ("
+             << v[i].getX() << ", " << v[i].getY() << ")" << endl;
+    }
 }
