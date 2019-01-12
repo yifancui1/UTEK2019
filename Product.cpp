@@ -1,4 +1,6 @@
 #include "Product.h"
+using namespace std;
+
 void Product::setQty(int x){
     qty = x;
 }
@@ -11,18 +13,18 @@ int Product::getX(){
 int Product::getY(){
     return y;
 }
-double getWeight(){
+double Product::getWeight(){
     return weight;
 }
-int getQty(){
+int Product::getQty(){
     return qty;
 }
-Product::Product (int x, int y, int productNum, double weight, int qty){
+Product::Product (int x, int y, int productNum, double weight){
     this->x = x;
     this->y = y;
     this->productNum = productNum;
     this->weight = weight;
-    this->qty = qty;
+    this->qty = 1;
 }
 void Product::setX(int x){
     this->x = x;
@@ -39,4 +41,13 @@ void Product::setWeight (double weight){
 }
 
 Product::Product(){
+}
+
+Product&  Product::operator=(const Product& p1) {
+    this->x = p1.x;
+    this->y = p1.y;
+    this->productNum = p1.productNum;
+    this->weight = p1.weight;
+    this->qty = 1;
+    return *this;
 }

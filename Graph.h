@@ -37,11 +37,19 @@ public:
 
 };
 
-class Graph {
-    vector<vector<Vertex>> adjList;
-public:
-    Graph(vector<vector<Vertex>> newGraph) {
-        adjList = newGraph;
-    }
-};
+// class Graph {
+//     vector<vector<Vertex>> adjList;
+// public:
+//     Graph(vector<vector<Vertex>> newGraph) {
+//         adjList = newGraph;
+//     }
+
+//     Graph(){
+//         Product p(0, 0,-1,0,0);
+//         Vertex O(p, false);
+//         adjList[p.getX].push_back(O);
+//     }
+
+
+// };
 #endif 

@@ -21,8 +21,8 @@ private:
     
 public:
     //constructor
-    product (int x, int y, int productNum, double weight, int qty);
-    product();
+    Product (int x, int y, int productNum, double weight);
+    Product();
 
     //mutator
     void setQty(int x);
@@ -37,6 +37,7 @@ public:
     int getY();
     double getWeight();
     int getQty();
+    Product& operator=(const Product& p1);
     
 };
 
