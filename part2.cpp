@@ -12,6 +12,7 @@
 #include "Product.h"
 #include "Product.cpp"
 #include "Graph.h"
+#include <bits/stdc++.h>
 using namespace std;
 
 typedef struct Position{
@@ -23,6 +24,33 @@ void insert(Position warehouse[100][100], int x, int y, int pd_num, double weigh
     warehouse[x][y].p = new Product(x, y, pd_num, weight);
     warehouse[x][y].visited = false;
 }
+
+bool checkBoundary(int row, int col, bool visited[100][100]) {
+    return ((row >=0) && (row < 100) && (col >= 0) && (col <= 100) && (visited[row][col] == false));
+}
+
+void BFS(Position warehouse[100][100], int row, int col, bool visited[100][100], int& carry) {
+    if (!checkBoundary(row, col, visited)) return;
+    int row_dir[] = {1, 1, 1, 0, 0, -1, -1, -1};
+    int col_dir[] = {1, 0, -1, 1, -1, 1, 0, -1};
+    if(carry + warehouse[row][col].p->getWeight() >= 100) {
+        // print out queue and then clear
+
+    }
+
+    queue<Product> q;
+    q.push(warehouse[row][col]);
+    while(!q.empty()) {
+        
+    }
+    visited[row][col] = true;
+
+    for (int i = 0; i < 8; i ++) {
+        if (checkBoundary(row + row_dir[i], col + col_dir[i], visited))
+            DFS(warehouse, row + row_dir[i], col + col_dir[i], visited);
+    }
+}
+
 
 int main() {
 
